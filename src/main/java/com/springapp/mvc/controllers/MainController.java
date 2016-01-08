@@ -14,6 +14,7 @@ public class MainController {
 		model.addAttribute("h1", "Hello ISC !");
 		model.addAttribute("h2", "I will be great project!");
 		model.addAttribute("h3", "Information control system of delivery");
+		model.addAttribute("h4", "Create entity for the project");
 		return "main";
 	}
 }

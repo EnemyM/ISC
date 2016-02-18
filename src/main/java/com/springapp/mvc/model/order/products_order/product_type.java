@@ -1,4 +1,4 @@
-package com.springapp.mvc.model.orders.products_order;
+package com.springapp.mvc.model.order.products_order;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -23,7 +23,7 @@ public class product_type {
     private String product_type;
 
     @OneToMany(mappedBy = "product_type", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<products> products = new HashSet<products>();
+    private Set<product> products = new HashSet<product>();
 
 
     public Integer getId_product_type() {
@@ -42,11 +42,11 @@ public class product_type {
         this.product_type = product_type;
     }
 
-    public Set<com.springapp.mvc.model.orders.products_order.products> getProducts() {
+    public Set<product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<com.springapp.mvc.model.orders.products_order.products> products) {
+    public void setProducts(Set<product> products) {
         this.products = products;
     }
 

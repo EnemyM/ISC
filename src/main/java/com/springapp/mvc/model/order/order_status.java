@@ -1,4 +1,4 @@
-package com.springapp.mvc.model.orders;
+package com.springapp.mvc.model.order;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -23,7 +23,7 @@ public class order_status {
     private String order_status;
 
     @OneToMany(mappedBy = "order_status", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<orders> orders = new HashSet<orders>();
+    private Set<order> orders = new HashSet<order>();
 
     public Integer getId_order_status() {
         return id_order_status;
@@ -41,11 +41,11 @@ public class order_status {
         this.order_status = order_status;
     }
 
-    public Set<com.springapp.mvc.model.orders.orders> getOrders() {
+    public Set<order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<com.springapp.mvc.model.orders.orders> orders) {
+    public void setOrders(Set<order> orders) {
         this.orders = orders;
     }
 

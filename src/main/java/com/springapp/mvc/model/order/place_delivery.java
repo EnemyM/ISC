@@ -1,4 +1,4 @@
-package com.springapp.mvc.model.orders;
+package com.springapp.mvc.model.order;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

@@ -1,6 +1,6 @@
 package com.springapp.mvc.dao.oder.product_order;
 
-import com.springapp.mvc.model.orders.products_order.products_order;
+import com.springapp.mvc.model.order.products_order.products_order;
 
 import java.util.List;
 

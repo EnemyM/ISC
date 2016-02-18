@@ -1,4 +1,4 @@
-package com.springapp.mvc.model.clients;
+package com.springapp.mvc.model.user;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -8,8 +8,8 @@ import javax.persistence.*;
  * Created by Anton on 24.01.2016.
  */
 @Entity
-@Table(name = "clients_phones")
-public class clients_phones {
+@Table(name = "user_phones")
+public class user_phones {
     @Id
     @Column(name = "id_phone")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,8 @@ public class clients_phones {
     private String phone_number;
 
     @ManyToOne
-    @JoinColumn(name = "id_client")
-    private clients clients;
+    @JoinColumn(name = "id_user")
+    private user user;
 
     public Integer getId_phone() {
         return id_phone;
@@ -31,7 +31,6 @@ public class clients_phones {
         this.id_phone = id_phone;
     }
 
-
     public String getPhone_number() {
         return phone_number;
     }
@@ -40,16 +39,16 @@ public class clients_phones {
         this.phone_number = phone_number;
     }
 
-    public com.springapp.mvc.model.clients.clients getClients() {
-        return clients;
+    public com.springapp.mvc.model.user.user getUser() {
+        return user;
     }
 
-    public void setClients(com.springapp.mvc.model.clients.clients clients) {
-        this.clients = clients;
+    public void setUser(com.springapp.mvc.model.user.user user) {
+        this.user = user;
     }
 
     public  String toString(){
         return "id phone: " + id_phone + ", phone number: " + phone_number +
-                ", id client: " + clients.getId_client();
+                ", id client: " + user.getId_user();
     }
 }

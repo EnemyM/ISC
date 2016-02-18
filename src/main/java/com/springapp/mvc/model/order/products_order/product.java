@@ -1,4 +1,4 @@
-package com.springapp.mvc.model.orders.products_order;
+package com.springapp.mvc.model.order.products_order;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -11,8 +11,8 @@ import java.util.Set;
  * Created by Anton on 25.01.2016.
  */
 @Entity
-@Table(name = "products")
-public class products {
+@Table(name = "product")
+public class product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class products {
     @JoinColumn(name = "id_product_type")
     private product_type product_type;
 
-    @OneToMany(mappedBy = "products" ,cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "product" ,cascade = CascadeType.ALL,
     orphanRemoval = true)
     private Set<products_order> products_orders = new HashSet<products_order>();
 
@@ -84,11 +84,11 @@ public class products {
         this.product_date_storage = product_date_storage;
     }
 
-    public com.springapp.mvc.model.orders.products_order.product_type getProduct_type() {
+    public com.springapp.mvc.model.order.products_order.product_type getProduct_type() {
         return product_type;
     }
 
-    public void setProduct_type(com.springapp.mvc.model.orders.products_order.product_type product_type) {
+    public void setProduct_type(com.springapp.mvc.model.order.products_order.product_type product_type) {
         this.product_type = product_type;
     }
 

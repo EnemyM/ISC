@@ -1,6 +1,6 @@
-package com.springapp.mvc.model.orders.products_order;
+package com.springapp.mvc.model.order.products_order;
 
-import com.springapp.mvc.model.orders.orders;
+import com.springapp.mvc.model.order.order;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -23,11 +23,11 @@ public class products_order {
 
     @ManyToOne
     @JoinColumn(name = "id_order")
-    private orders orders;
+    private order order;
 
     @ManyToOne
     @JoinColumn(name = "id_product")
-    private products products;
+    private product product;
 
     public Integer getId_products_order() {
         return id_products_order;
@@ -45,19 +45,29 @@ public class products_order {
         this.amount_product = amount_product;
     }
 
-    public com.springapp.mvc.model.orders.orders getOrders() {
-        return orders;
+    public order getOrder() {
+        return order;
     }
 
-    public void setOrders(com.springapp.mvc.model.orders.orders orders) {
-        this.orders = orders;
+    public void setOrder(order orders) {
+        this.order = orders;
     }
 
-    public com.springapp.mvc.model.orders.products_order.products getProducts() {
-        return products;
+    public product getProduct() {
+        return product;
     }
 
-    public void setProducts(com.springapp.mvc.model.orders.products_order.products products) {
-        this.products = products;
+    public void setProduct(product product) {
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "products_order{" +
+                "id_products_order=" + id_products_order +
+                ", amount_product='" + amount_product + '\'' +
+                ", orders=" + order +
+                ", product=" + product +
+                '}';
     }
 }

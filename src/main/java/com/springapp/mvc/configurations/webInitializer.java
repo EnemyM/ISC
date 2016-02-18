@@ -2,23 +2,12 @@ package com.springapp.mvc.configurations;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
+
 /**
  * Created by Anton on 24.01.2016.
  */
-public class webInitializer extends AbstractAnnotationConfigDispatcherServletInitializer /*implements WebApplicationInitializer*/ {
-
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-//        applicationContext.register(AppConfig.class);
-//        applicationContext.setServletContext(servletContext);
-//
-//        /*Configuration dispatcher servlet*/
-//        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher",
-//                new DispatcherServlet(applicationContext));
-//        servlet.setLoadOnStartup(1);
-//        servlet.addMapping("/");
-//    }
-
+public class webInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -33,5 +22,12 @@ public class webInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
+    }
+
+
+    @Override
+    protected Filter[] getServletFilters() {
+        Filter [] singleton = {new CORSFilter()};
+        return singleton;
     }
 }

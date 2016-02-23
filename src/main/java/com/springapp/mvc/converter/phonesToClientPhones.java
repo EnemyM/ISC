@@ -4,7 +4,7 @@ package com.springapp.mvc.converter;
  * Created by Anton on 02.02.2016.
  */
 import com.springapp.mvc.model.user.user_phones;
-import com.springapp.mvc.services.user.UserPhonesService;
+import com.springapp.mvc.services.user.phone.UserPhonesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 

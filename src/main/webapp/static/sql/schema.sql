@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `ISC`.`user` (
   `email_user` VARCHAR(45) NOT NULL,
   `user_password` VARCHAR(45) NOT NULL,
   `address_user` VARCHAR(45) NOT NULL,
+  `enabled` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id_user`))
   ENGINE = InnoDB;
 
@@ -68,11 +69,11 @@ CREATE TABLE IF NOT EXISTS `ISC`.`user` (
 CREATE TABLE IF NOT EXISTS `ISC`.`user_phones` (
   `id_phone` INT NOT NULL AUTO_INCREMENT,
   `phone_number` VARCHAR(45) NOT NULL,
-  `id_user` INT NOT NULL,
-  PRIMARY KEY (`id_phone`, `id_user`),
-  INDEX `fk_clients_phones_clients1_idx` (`id_user` ASC),
-  CONSTRAINT `fk_clients_phones_clients1`
-  FOREIGN KEY (`id_user`)
+  `user_id_user` INT NOT NULL,
+  PRIMARY KEY (`id_phone`, `user_id_user`),
+  INDEX `fk_user_phones_user1_idx` (`user_id_user` ASC),
+  CONSTRAINT `fk_user_phones_user1`
+  FOREIGN KEY (`user_id_user`)
   REFERENCES `ISC`.`user` (`id_user`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -220,20 +221,21 @@ CREATE TABLE IF NOT EXISTS `ISC`.`product_type` (
 
 
 -- -----------------------------------------------------
--- Table `ISC`.`user_roles`
+-- Table `ISC`.`user_role`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ISC`.`user_roles` (
-  `id_user_roles` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `ISC`.`user_role` (
+  `id_user_role` INT NOT NULL AUTO_INCREMENT,
   `user_role` VARCHAR(45) NOT NULL,
-  `user_id_user` INT NOT NULL,
-  PRIMARY KEY (`id_user_roles`, `user_id_user`),
-  INDEX `fk_user_roles_clients1_idx` (`user_id_user` ASC),
-  CONSTRAINT `fk_user_roles_clients1`
-  FOREIGN KEY (`user_id_user`)
+  `id_user` INT NOT NULL,
+  PRIMARY KEY (`id_user_role`, `id_user`),
+  INDEX `fk_user_roles_user1_idx` (`id_user` ASC),
+  CONSTRAINT `fk_user_roles_user1`
+  FOREIGN KEY (`id_user`)
   REFERENCES `ISC`.`user` (`id_user`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

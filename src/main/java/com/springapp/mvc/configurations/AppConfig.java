@@ -2,6 +2,7 @@ package com.springapp.mvc.configurations;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -15,10 +16,9 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.springapp.mvc")
+@Import({SecurityConfig.class})
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-//    @Autowired
-//    phonesToClientPhones phonesToClientPhones;
 
     /**
      * Configure ViewResolvers to deliver preferred views.
@@ -48,10 +48,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         matcher.setUseRegisteredSuffixPatternMatch(true);
     }
 
-//    @Bean
-//    public MessageSource messageSource() {
-//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-//        messageSource.setBasename("messages");
-//        return messageSource;
-//    }
 }

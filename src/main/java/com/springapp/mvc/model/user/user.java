@@ -44,6 +44,9 @@ public class user {
     @Column(name = "address_user")
     private String address_user;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<user_phones> user_phones = new HashSet<user_phones>();
@@ -52,7 +55,7 @@ public class user {
     private Set<order> orders = new HashSet<order>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<user_roles> user_roles = new HashSet<user_roles>();
+    private Set<user_role> user_role = new HashSet<user_role>();
 
     public Integer getId_user() {
         return id_user;
@@ -126,12 +129,21 @@ public class user {
         this.orders = orders;
     }
 
-    public Set<com.springapp.mvc.model.user.user_roles> getUser_roles() {
-        return user_roles;
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setUser_roles(Set<com.springapp.mvc.model.user.user_roles> user_roles) {
-        this.user_roles = user_roles;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<com.springapp.mvc.model.user.user_role> getUser_role() {
+        return user_role;
+    }
+
+    public void setUser_role(Set<com.springapp.mvc.model.user.user_role> user_role) {
+        this.user_role = user_role;
     }
 
     public void addPhone(user_phones phone){
@@ -148,10 +160,29 @@ public class user {
     public void removeOrder(order order){
         getOrders().remove(order);
     }
-    public String toString(){
-        return "id client: " + id_user + ", name firm: " + name_firm +
-                ", first name: " + first_name + ", last_name: " + last_name + ", email: " + email_user +", client address: "+
-                address_user + ", client password: "
-                + user_password ;
+
+    public void addRole(user_role role){
+        role.setUser(this);
+        getUser_role().add(role);
+    }
+    public void removeRole(user_role role){
+        getUser_role().remove(role);
+    }
+
+    @Override
+    public String toString() {
+        return "user{" +
+                "id_user=" + id_user +
+                ", name_firm='" + name_firm + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email_user='" + email_user + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", address_user='" + address_user + '\'' +
+                ", enabled=" + enabled +
+                ", user_phones=" + user_phones +
+                ", orders=" + orders +
+                ", user_role=" + user_role +
+                '}';
     }
 }

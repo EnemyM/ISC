@@ -149,7 +149,7 @@ public class order {
 
     public String toString(){
         return "id order: " + id_order + ", date order: " + date_order + ", date delivery: " + date_delivery +
-                ", time delivery: " + time_delivery + ", id client: " + user.getId_user() +
+                ", time delivery: " + time_delivery + ", id user: " + user.getId_user() +
                 ", id order status: " + order_status.getId_order_status();
     }
 }

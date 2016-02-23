@@ -1,7 +1,9 @@
 package com.springapp.mvc.controllers;
 
 import com.springapp.mvc.model.user.user;
+import com.springapp.mvc.model.user.user_role;
 import com.springapp.mvc.services.user.UserService;
+import com.springapp.mvc.services.user.role.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,22 +17,37 @@ import org.springframework.web.util.UriComponentsBuilder;
 /**
  * Created by Anton on 10.02.2016.
  */
-@RestController(value = "/registration/")
+@RestController
 public class RegistrationRestController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserRoleService roleService;
 
 
     @RequestMapping(value = "/registration/", method = RequestMethod.POST )
     public ResponseEntity<Void> createClient(@RequestBody user user,UriComponentsBuilder ucBuilder){
 
-        if (userService.isUserExist(user)){
+
+        if (userService.isUserExist(user.getEmail_user())){
             System.out.println("Client with  firm name " + user.getName_firm()+ " is already exist ");
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
+        user.setEnabled(true);
+        System.out.println("before role");
+
+        user_role role = new user_role("ROLE_ADMIN");
+        user.addRole(role);
+//        user_role role = roleService.findByRole("ROLE_ADMIN");
+//
+//        user.addRole(role);
+
+        System.out.println("after lore");
         userService.saveUser(user);
+
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/registration/{id__user}").buildAndExpand(user.getId_user()).toUri());
+        headers.setLocation(ucBuilder.path("/registration/{id_user}").buildAndExpand(user.getId_user()).toUri());
         return new ResponseEntity<Void>(headers,HttpStatus.CREATED);
     }
 

@@ -1,6 +1,6 @@
 package com.springapp.mvc.services.user;
 
-import com.springapp.mvc.dao.client.UserDAO;
+import com.springapp.mvc.dao.user.UserDAO;
 import com.springapp.mvc.model.user.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public boolean isUserExist(user client) {
-        return findByEmail(client.getEmail_user()) != null;
+    public boolean isUserExist(String email_user) {
+        return findByEmail(email_user) != null;
     }
 
 

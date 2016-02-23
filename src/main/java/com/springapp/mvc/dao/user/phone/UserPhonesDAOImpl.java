@@ -1,4 +1,4 @@
-package com.springapp.mvc.dao.client;
+package com.springapp.mvc.dao.user.phone;
 
 import com.springapp.mvc.dao.AbstractDao;
 import com.springapp.mvc.model.user.user_phones;

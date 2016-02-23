@@ -49,6 +49,6 @@ public class user_phones {
 
     public  String toString(){
         return "id phone: " + id_phone + ", phone number: " + phone_number +
-                ", id client: " + user.getId_user();
+                ", id user: " + user.getId_user();
     }
 }

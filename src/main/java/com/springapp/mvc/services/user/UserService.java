@@ -15,6 +15,6 @@ public interface UserService {
     void updateUser(user user);
     void deleteById(int id_user);
     List<user> findAllUsers();
-    boolean isUserExist(user user);
+    boolean isUserExist(String email_user);
     boolean isUserEmailUnique(Integer id, String email_user);
 }

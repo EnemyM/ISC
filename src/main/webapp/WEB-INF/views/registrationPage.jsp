@@ -13,6 +13,7 @@
     <meta http-equiv = "Content-Type" content="text/html; charset = UTF-8">
     <title>Clint registration form</title>
     <style>
+
         .first_name.ng-valid {
             background-color: lightgreen;
         }
@@ -51,7 +52,7 @@
 
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="name_firm"> Name firm </label>
+                            <label class="col-md-2 control-lable" for="name_firm"> Company Name </label>
                             <div class="col-md-7">
                                 <input type="text" ng-model="ctrl.user.name_firm" id="name_firm" class="name_firm form-control input-sm" placeholder="Enter name your firm" required ng-minlength="2"/>
                                 <div class="has-error" ng-show="registerForm.$dirty">
@@ -140,7 +141,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
     <script src="<c:url value='/static/js/app.js' />"></script>
-    <script src="<c:url value='/static/js/services/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/services/register_service.js' />"></script>
     <script src="<c:url value='/static/js/controllers/registration_controller.js' />"></script>
 
 </body>

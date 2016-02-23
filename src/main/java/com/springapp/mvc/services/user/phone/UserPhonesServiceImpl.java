@@ -1,6 +1,6 @@
-package com.springapp.mvc.services.user;
+package com.springapp.mvc.services.user.phone;
 
-import com.springapp.mvc.dao.client.UserPhonesDAO;
+import com.springapp.mvc.dao.user.phone.UserPhonesDAO;
 import com.springapp.mvc.model.user.user_phones;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

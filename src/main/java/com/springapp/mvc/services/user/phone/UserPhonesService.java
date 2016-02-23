@@ -1,4 +1,4 @@
-package com.springapp.mvc.services.user;
+package com.springapp.mvc.services.user.phone;
 
 import com.springapp.mvc.model.user.user_phones;
 

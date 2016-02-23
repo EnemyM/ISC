@@ -44,8 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .failureUrl("/")
                 .usernameParameter("email_user")
                 .passwordParameter("user_password")
-               .and().logout().logoutSuccessUrl("/");
-//               .and().csrf();
+               .and().logout().logoutSuccessUrl("/")
+               .and().csrf();
     }
     @Bean
     public org.springframework.security.crypto.password.PasswordEncoder passwordEncoder() {
